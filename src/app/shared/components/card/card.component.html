@@ -1,0 +1,32 @@
+<mat-card>
+  <button
+    (click)="clicked.emit({item, type:1})"
+    class="delete-btn"
+    mat-mini-fab
+    color="primary"
+  >
+    <mat-icon>delete</mat-icon>
+  </button>
+
+  <button
+    (click)="clicked.emit({item, type:3})"
+    #tooltip="matTooltip"
+    matTooltipDisabled
+    (click)="changeTooltip()"
+    matTooltipPosition="above"
+    matTooltip="Password copied!"
+    class="copy-btn"
+    mat-mini-fab
+    color="primary"
+  >
+    <mat-icon>edit</mat-icon>
+  </button>
+  <mat-card-header
+    style="padding: 16px; cursor: pointer"
+    (click)="clicked.emit({item, type:2})"
+  >
+    <mat-card-title>{{ item.name }}</mat-card-title>
+  </mat-card-header>
+</mat-card>
+
+<!-- [matTooltipDisabled] -->

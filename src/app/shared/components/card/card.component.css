@@ -1,0 +1,15 @@
+.delete-btn {
+  position: absolute;
+  top: -23px;
+  right: -15px;
+}
+
+.copy-btn {
+  position: absolute;
+  top: -23px;
+  left: -15px;
+}
+
+mat-card {
+  padding: 0;
+}

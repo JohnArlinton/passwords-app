@@ -1,0 +1,50 @@
+<h2 mat-dialog-title>Install Angular</h2>
+<mat-dialog-content>
+  <form [formGroup]="passwordForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your name</mat-label>
+      <input
+        matInput
+        placeholder="Facebook Account"
+        formControlName="name"
+        required
+      />
+      <mat-error *ngIf="passwordForm.controls['name'].status == 'INVALID'">{{getErrorMessage(passwordForm.controls['name'].errors)}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your url</mat-label>
+      <input matInput placeholder="facebook.com" formControlName="url" required />
+      <mat-error *ngIf="passwordForm.controls['url'].status == 'INVALID'">{{getErrorMessage(passwordForm.controls['url'].errors)}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your username</mat-label>
+      <input matInput placeholder="johndoe" formControlName="username" required />
+      <mat-error *ngIf="passwordForm.controls['username'].status == 'INVALID'">{{getErrorMessage(passwordForm.controls['username'].errors)}}</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Enter your password</mat-label>
+      <input
+        matInput
+        minlength="4"
+        maxlength="20"
+        formControlName="password"
+        [type]="hide ? 'password' : 'text'"
+      />
+      <button
+        mat-icon-button
+        matSuffix
+        (click)="hide = !hide"
+        [attr.aria-label]="'Hide password'"
+        [attr.aria-pressed]="hide"
+      >
+        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+      </button>
+      <mat-hint align="end">{{passwordForm.controls['password'].value?.length || 0}}/20</mat-hint>
+      <mat-error *ngIf="passwordForm.controls['password'].status == 'INVALID'">{{getErrorMessage(passwordForm.controls['password'].errors)}}</mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button mat-dialog-close [disabled]="!this.passwordForm.valid" (click)="submitPassword()" cdkFocusInitial>Save</button>
+</mat-dialog-actions>
